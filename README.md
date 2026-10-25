@@ -39,4 +39,4 @@ Juego sencillo en el que el usuario introduce sus datos y completa pequeñas mis
 
 ## Autor
 
-Nombre del alumno - Curso 2026/2027
+Javier Portela - Curso 2026/2027
