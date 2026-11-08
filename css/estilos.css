@@ -1,0 +1,71 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #1e1e2f;
+    color: #ffffff;
+}
+
+main {
+    width: 100%;
+    max-width: 380px;
+    padding: 24px;
+    background-color: #2b2b44;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Formulario de perfil */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+button {
+    margin-top: 12px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #6c63ff;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5148d8;
+}
+
+/* Mensaje de resultado ("Acceso denegado" / "Bienvenido") */
+#mensaje {
+    margin-top: 16px;
+    min-height: 1.2em;
+    text-align: center;
+    font-weight: bold;
+}
