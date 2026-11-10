@@ -52,6 +52,8 @@ function validarPerfil() {
         return;
     }
 
-    // Todo correcto
-    mensaje.textContent = "Bienvenido, " + nombre;
+        // Todo correcto: guardamos los datos y pasamos a la pantalla del juego
+    sessionStorage.setItem("nombre", nombre);
+    sessionStorage.setItem("fechaNacimiento", fechaTexto);
+    window.location.href = "juego.html";
 }
