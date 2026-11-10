@@ -19,6 +19,8 @@ function iniciarJuego() {
 
     document.getElementById("saludo").textContent = "Jugador: " + nombre;
     document.getElementById("objetivo").textContent = OBJETIVO;
+    // Rellenamos el panel del jugador con sus datos
+    mostrarPanel(nombre);
 
     document.getElementById("btnAtacar").addEventListener("click", atacar);
     document.getElementById("btnSalir").addEventListener("click", salir);
@@ -73,4 +75,46 @@ function salir() {
     // Borramos los datos de la sesión y volvemos al perfil
     sessionStorage.clear();
     window.location.href = "index.html";
+}
+// ----------------------------------------------------------------------
+// calcularEdad: recibe una fecha de nacimiento (objeto Date) y devuelve
+// la edad en años cumplidos. (Es la misma función que tienes en script.js)
+// ----------------------------------------------------------------------
+function calcularEdad(fechaNacimiento) {
+    // new Date() sin parámetros crea la fecha y hora de hoy
+    const hoy = new Date();
+
+    // getFullYear() devuelve el año con 4 cifras
+    let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+
+    // getMonth() devuelve el mes de 0 (enero) a 11 (diciembre)
+    const mesDiferencia = hoy.getMonth() - fechaNacimiento.getMonth();
+
+    // Si todavía no ha cumplido años este año, restamos 1.
+    // getDate() devuelve el día del mes.
+    if (mesDiferencia < 0 || (mesDiferencia === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+        edad--;
+    }
+
+    return edad;
+}
+
+// ----------------------------------------------------------------------
+// mostrarPanel: rellena el panel con el nombre formateado y la edad.
+// ----------------------------------------------------------------------
+function mostrarPanel(nombre) {
+    // charAt(0) coge la primera letra y toUpperCase() la pasa a mayúscula.
+    // slice(1) coge el texto desde la segunda letra y toLowerCase() lo pasa
+    // a minúsculas. Al unirlos con + obtenemos el nombre con formato
+    // ("jAVIER" -> "Javier").
+    const nombreFormateado = nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
+
+    // Recuperamos la fecha guardada en sessionStorage (viene como texto "AAAA-MM-DD")
+    // y la convertimos en un objeto Date para poder calcular la edad
+    const fechaTexto = sessionStorage.getItem("fechaNacimiento");
+    const edad = calcularEdad(new Date(fechaTexto));
+
+    // Escribimos los datos en el panel
+    document.getElementById("nombreFormateado").textContent = nombreFormateado;
+    document.getElementById("edad").textContent = edad;
 }
