@@ -69,3 +69,18 @@ button:hover {
     text-align: center;
     font-weight: bold;
 }
+/* Panel del jugador (juego.html).
+   Estos son los estilos por defecto; JavaScript cambia el color de fondo
+   y el color del texto según el nombre y la edad del jugador. */
+#panel {
+    margin-bottom: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #3a3a5c;
+}
+
+/* Quita el margen superior del título del panel para que no sobre espacio */
+#panel h2 {
+    margin-top: 0;
+    font-size: 1.1rem;
+}

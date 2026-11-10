@@ -117,4 +117,39 @@ function mostrarPanel(nombre) {
     // Escribimos los datos en el panel
     document.getElementById("nombreFormateado").textContent = nombreFormateado;
     document.getElementById("edad").textContent = edad;
+    // Cambiamos los estilos del panel según el nombre y la edad
+    aplicarEstilosPanel(nombre, edad);
+}
+// ----------------------------------------------------------------------
+// aplicarEstilosPanel: cambia los colores del panel según los datos
+// del jugador.
+//  - Color de FONDO: depende de la primera letra del nombre
+//  - Color del TEXTO: depende de la edad
+// ----------------------------------------------------------------------
+function aplicarEstilosPanel(nombre, edad) {
+    // Guardamos el panel en una variable para no buscarlo varias veces
+    const panel = document.getElementById("panel");
+
+    // Primera letra del nombre, en minúscula para compararla fácilmente
+    const inicial = nombre.charAt(0).toLowerCase();
+
+    // includes() comprueba si un texto contiene otro.
+    // Aquí miramos si la inicial está dentro del texto de las vocales.
+    if ("aeiouáéíóú".includes(inicial)) {
+        // Nombre que empieza por vocal -> fondo verde
+        panel.style.backgroundColor = "#1f6f5c";
+    } else {
+        // Nombre que empieza por consonante -> fondo morado
+        panel.style.backgroundColor = "#7a3e8e";
+    }
+
+    // Color del texto según la edad.
+    // La propiedad .style cambia el CSS directamente desde JavaScript.
+    if (edad < 18) {
+        // Menor de edad -> texto amarillo
+        panel.style.color = "#ffe066";
+    } else {
+        // Mayor de edad -> texto blanco
+        panel.style.color = "#ffffff";
+    }
 }
