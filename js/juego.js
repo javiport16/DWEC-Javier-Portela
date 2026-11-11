@@ -24,6 +24,7 @@ function iniciarJuego() {
 
     document.getElementById("btnAtacar").addEventListener("click", atacar);
     document.getElementById("btnSalir").addEventListener("click", salir);
+    document.getElementById("btnAyuda").addEventListener("click", abrirAyuda);
 }
 
 function atacar() {
@@ -152,4 +153,24 @@ function aplicarEstilosPanel(nombre, edad) {
         // Mayor de edad -> texto blanco
         panel.style.color = "#ffffff";
     }
+}
+    // ----------------------------------------------------------------------
+// abrirAyuda: abre una ventana adicional (ayuda.html) enviándole el
+// nombre del jugador, su puntuación y el número de ataques.
+// ----------------------------------------------------------------------
+function abrirAyuda() {
+    // Recuperamos el nombre guardado en sessionStorage
+    const nombre = sessionStorage.getItem("nombre");
+
+    // Los datos se envían en la propia dirección (después del "?"):
+    //   ayuda.html?nombre=Javier&puntuacion=20&ataques=4
+    // encodeURIComponent() convierte caracteres especiales (espacios, tildes...)
+    // para que no rompan la dirección.
+    const url = "ayuda.html?nombre=" + encodeURIComponent(nombre) +
+                "&puntuacion=" + puntuacion +
+                "&ataques=" + historial.length;
+
+    // window.open(dirección, nombre de la ventana, características)
+    // Abre una ventana nueva de 400x300 píxeles.
+    window.open(url, "ayuda", "width=400,height=300");
 }
