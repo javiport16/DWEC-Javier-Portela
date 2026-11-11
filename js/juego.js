@@ -19,6 +19,8 @@ function iniciarJuego() {
 
     document.getElementById("saludo").textContent = "Jugador: " + nombre;
     document.getElementById("objetivo").textContent = OBJETIVO;
+    // Mostramos el récord guardado en localStorage (si existe)
+    mostrarRecord();
     // Rellenamos el panel del jugador con sus datos
     mostrarPanel(nombre);
 
@@ -173,4 +175,32 @@ function abrirAyuda() {
     // window.open(dirección, nombre de la ventana, características)
     // Abre una ventana nueva de 400x300 píxeles.
     window.open(url, "ayuda", "width=400,height=300");
+}
+// ----------------------------------------------------------------------
+// mostrarRecord: lee el récord guardado en localStorage y lo muestra.
+// ----------------------------------------------------------------------
+function mostrarRecord() {
+    // localStorage funciona como sessionStorage, pero los datos NO se borran
+    // al cerrar la pestaña o el navegador. Si la clave no existe devuelve null.
+    const record = localStorage.getItem("record");
+
+    if (record !== null) {
+        document.getElementById("record").textContent = record;
+    }
+}
+
+// ----------------------------------------------------------------------
+// guardarRecord: guarda el número de ataques como récord si es la primera
+// partida ganada o si es menor que el récord anterior.
+// ----------------------------------------------------------------------
+function guardarRecord(ataques) {
+    const recordActual = localStorage.getItem("record");
+
+    // localStorage solo guarda texto, así que para comparar números usamos
+    // Number(), que convierte el texto "12" en el número 12.
+    if (recordActual === null || ataques < Number(recordActual)) {
+        // setItem(clave, valor) guarda el dato
+        localStorage.setItem("record", ataques);
+        document.getElementById("record").textContent = ataques;
+    }
 }
