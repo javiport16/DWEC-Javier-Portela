@@ -4,16 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sala 1 | Escape Room</title>
-  <link rel="stylesheet" href="../css/estilos.css">
+  <link rel="stylesheet" href="../css/sala1.css">
   <script src="../js/sala1.js" defer></script>
 </head>
 <body>
   <main>
-    <h1>Sala 1</h1>
-    <p>Reto pendiente de implementar.</p>
-    <section id="reto" aria-label="Reto de la primera sala"></section>
-    <p id="mensaje" role="status"></p>
-    <a href="../index.html">Volver al inicio</a>
+    <p class="etiqueta">ESCAPE ROOM · SALA 1 DE 3</p>
+    <h1>El despacho cerrado</h1>
+    <p>La llave de la puerta está dentro de una caja fuerte. Encuentra su código de tres cifras para salir.</p>
+
+    <section aria-labelledby="titulo-pistas">
+      <h2 id="titulo-pistas">Una nota sobre la mesa</h2>
+      <p>«Lee estas pistas en orden. Cada respuesta es una cifra del código».</p>
+      <ol>
+        <li>¿Cuántas patas tiene una silla normal?</li>
+        <li>¿Cuántos días tiene una semana?</li>
+        <li>¿Cuántas ruedas tiene una bicicleta?</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="titulo-caja">
+      <h2 id="titulo-caja">Caja fuerte</h2>
+      <p id="estado">Estado: cerrada</p>
+      <form id="formulario" novalidate>
+        <label for="codigo">Código de tres cifras</label>
+        <div class="controles">
+          <input id="codigo" name="codigo" type="text" inputmode="numeric" maxlength="3" autocomplete="off" aria-describedby="ayuda mensaje" required>
+          <button id="abrir" type="submit">Abrir caja</button>
+        </div>
+        <p id="ayuda">Introduce las tres cifras juntas, en el orden de las pistas.</p>
+      </form>
+      <p>Intentos válidos: <span id="intentos">0</span></p>
+      <p id="mensaje" role="status" aria-live="polite"></p>
+      <a id="siguiente" class="boton" href="sala2.html" hidden>Usar la llave y pasar a la sala 2</a>
+    </section>
+
+    <nav aria-label="Opciones de la sala">
+      <button id="reiniciar" type="button" class="secundario">Reiniciar sala</button>
+      <a href="../index.html">Volver al inicio</a>
+    </nav>
   </main>
 </body>
 </html>
